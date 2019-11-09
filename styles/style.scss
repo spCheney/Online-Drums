@@ -1,0 +1,223 @@
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box; 
+}
+body{
+    font-family: 'Poppins', sans-serif;
+}
+.app{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1{
+    margin: 50px 0px 30px 0px;
+    text-align: center;
+    font-size: 40px;
+}
+header p{
+    font-size: 20px;
+}
+
+//drawing the beat pads
+.pads{
+    position: fixed;
+    left: 0px;
+    top: 200px;
+    height: calc(100% - 200px);
+    width: 100px;
+}
+
+.pads > div{
+    height: 20%;
+}
+
+.pad1{
+    background: #60d981;
+}
+.pad2{
+    background: #d918f2;
+}
+.pad3{
+    background: #0c92e0;
+}
+.pad4{
+    background: #890abe;
+}
+.pad5{
+    background: #f0ec00;
+}
+.pad6{
+    background: #ff5e00;
+}
+
+//jumping ball animation
+.visual > div {
+    position: absolute;
+    width: 5%;
+    height: 5%;
+    border-radius: 50%;
+    bottom: 0%;
+    z-index: -1;
+}
+
+$inc: calc((100% - 200px) / 5);
+$start: calc(#{#{$inc} / 2}  - 2.5%);
+$j0Pos: calc(#{$start} + (#{$inc} * 4));
+$j1Pos: calc(#{$start} + (#{$inc} * 3));
+$j2Pos: calc(#{$start} + (#{$inc} * 2));
+$j3Pos: calc(#{$start} + #{$inc});
+@keyframes jump0{
+    0%{
+        bottom: $j0Pos;
+        left: 0%;
+    }
+    50%{
+        bottom: $j0Pos;
+        left: 50%;
+    }
+    100%{
+        bottom: $j0Pos;
+        left: 0%;
+    }
+}
+@keyframes jump1{
+    0%{
+        bottom: $j1Pos;
+        left: 0%;
+    }
+    50%{
+        bottom: $j1Pos;
+        left: 50%;
+    }
+    100%{
+        bottom: $j1Pos;
+        left: 0%;
+    }
+}
+@keyframes jump2{
+    0%{
+        bottom: $j2Pos;
+        left: 0%;
+    }
+    50%{
+        bottom: $j2Pos;
+        left: 50%;
+    }
+    100%{
+        bottom: $j2Pos;
+        left: 0%;
+    }
+}
+@keyframes jump3{
+    0%{
+        bottom: $j3Pos;
+        left: 0%;
+    }
+    50%{
+        bottom: $j3Pos;
+        left: 50%;
+    }
+    100%{
+        bottom: $j3Pos;
+        left: 0%;
+    }
+}
+@keyframes jump4{
+    0%{
+        bottom: $start;
+        left: 0%;
+    }
+    50%{
+        bottom: $start;
+        left: 50%;
+    }
+    100%{
+        bottom: $start;
+        left: 0%;
+    }
+}
+
+//drawing the lines
+.lines{
+    position: fixed;
+    left: 100px;
+    top: 200px;
+    width: calc(100% - 100px);
+    height: calc(100% - 200px);
+    z-index: -2;
+    display: flex;
+}
+
+$wLineWidth: calc((100% - 20px) / 5);
+$color1: #ffffff;
+$color2: #6d6f70;
+$color3: #000000;
+
+.line0{
+    background: $color1;
+    width: $wLineWidth;
+}
+.line1{
+    background: $color2;
+    width: 5px;
+}
+.line2{
+    background: $color1;
+    width: $wLineWidth;
+}
+.line3{
+    background: $color2;
+    width: 5px;
+}
+.line4{
+    background: $color1;
+    width: $wLineWidth;
+}
+.line5{
+    background: $color2;
+    width: 5px;
+}
+.line6{
+    background: $color1;
+    width: $wLineWidth;
+}
+.line7{
+    background: $color2;
+    width: 5px;
+}
+
+$phWidth: calc(100% - 100px);
+.placeHolders{
+    position: fixed;
+    left: calc(100px + #{$wLineWidth / 2});
+    width: $phWidth;
+    height: calc(100% - 200px);
+    top: 200px;
+
+    z-index: 1;
+}
+.placeH1{
+    background: red;
+    height: 20%;
+    width: $wLineWidth;
+}
+.placeH1 > div {
+    position: absolute;
+    width: 5%;
+    height: 5%;
+    border-radius: 50%;
+    top: calc(20% / 2 - 2.5%);
+    left: 50%;
+    z-index: 2;
+}
+
+.placeH2{
+    background: blue;
+    height: 100px;
+    width: calc(#{$wLineWidth});
+}
