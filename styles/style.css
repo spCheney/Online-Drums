@@ -249,7 +249,6 @@ header p {
 }
 
 .line1 {
-  background: #6d6f70;
   width: 5px;
 }
 
@@ -283,19 +282,11 @@ header p {
   width: 5px;
 }
 
-.placeHolders {
-  position: fixed;
-  left: calc(100px + calc((100% - 20px) / 5)/2);
-  width: calc(100% - 100px);
-  height: calc(100% - 200px);
-  top: 200px;
-  z-index: 1;
-}
-
 .placeH1 {
-  background: red;
+  background: white;
   height: 20%;
   width: calc((100% - 20px) / 5);
+  z-index: -3;
 }
 
 .placeH1 > div {
@@ -304,8 +295,7 @@ header p {
   height: 5%;
   border-radius: 50%;
   top: calc(20% / 2 - 2.5%);
-  left: 50%;
-  z-index: 2;
+  left: calc(calc((100% - 20px) / 5) / 2 - 2.5%);
 }
 
 .placeH2 {

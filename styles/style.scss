@@ -166,9 +166,10 @@ $color3: #000000;
     width: $wLineWidth;
 }
 .line1{
-    background: $color2;
+    // background: $color2;
     width: 5px;
 }
+
 .line2{
     background: $color1;
     width: $wLineWidth;
@@ -196,19 +197,20 @@ $color3: #000000;
 
 //clickable locations of drums on the metronome lines
 $phWidth: calc(100% - 100px);
-.placeHolders{
-    position: fixed;
-    left: calc(100px + #{$wLineWidth / 2});
-    width: $phWidth;
-    height: calc(100% - 200px);
-    top: 200px;
+// .placeHolders{
+//     position: fixed;
+//     left: calc(100px + #{$wLineWidth / 2});
+//     width: $phWidth;
+//     height: calc(100% - 200px);
+//     top: 200px;
 
-    z-index: 1;
-}
+    //z-index: 1;
+// }
 .placeH1{
-    background: red;
+    background: white;
     height: 20%;
     width: $wLineWidth;
+    z-index: -3;
 }
 .placeH1 > div {
     position: absolute;
@@ -216,8 +218,8 @@ $phWidth: calc(100% - 100px);
     height: 5%;
     border-radius: 50%;
     top: calc(20% / 2 - 2.5%);
-    left: 2.5%;
-    z-index: 2;
+    left: calc(#{$wLineWidth} / 2 - 2.5%);
+    //z-index: 1;
 }
 
 .placeH2{
