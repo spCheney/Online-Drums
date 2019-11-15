@@ -10,20 +10,21 @@ window.addEventListener('load', () => {
         "#f0ec00",
         "#ff5e00"
     ];
+    //metronome lines
     const lines = document.querySelectorAll(".lines div");
     const lineColors = [
-        "#ffffff",
-        "#6d6f70",
-        "#000000"
+        "#ffffff",      //black
+        "#6d6f70",      //gray
+        "#000000"       //white
     ];
     const pHolders = document.querySelectorAll(".placeHolders div");
 
-    var bpm = 120;
-    var lineBeat = 1;
+    var bpm = 120;          //how fast the lines change in beats per minute
+    var lineBeat = 1;       //line metronome starts here
 
     console.log(sounds);
 
-
+    //creates bubble animation and plays drum sound
     pads.forEach((pad, index) =>{
         pad.addEventListener('click', function(){
             sounds[index].currentTime = 0;
@@ -33,6 +34,7 @@ window.addEventListener('load', () => {
         })
     })
 
+    //Bubble animation
     const createBubbles = (index) =>{
         const bubble = document.createElement("div");
         visual.appendChild(bubble);
@@ -62,8 +64,10 @@ window.addEventListener('load', () => {
           })
     };
 
+    //timing function used for the metronome line animation
     setInterval(beat, 60000 / bpm);
 
+    //Changes the color of the current line back to gray and the next line to black
     function beat() {
         if (beatStarted()) {
             if(lineBeat == 1) {
@@ -82,6 +86,7 @@ window.addEventListener('load', () => {
         }
     }
 
+    //checks if the metronome is already going or in the middle
     function beatStarted() {
         for(i = 1; i < 8; i += 2) {
             if (lines[i].style.backgroundColor == lineColors[1]) {
@@ -91,7 +96,7 @@ window.addEventListener('load', () => {
         return true;
     }
 
-
+    //places bubble on a metronome line
     pHolders.forEach((ph, index) => {
         ph.addEventListener('click', function(){
             const marked = document.createElement("div");
