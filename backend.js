@@ -99,9 +99,17 @@ window.addEventListener('load', () => {
     //places bubble on a metronome line
     pHolders.forEach((ph, index) => {
         ph.addEventListener('click', function(){
-            const marked = document.createElement("div");
-            ph.appendChild(marked);
-            marked.style.backgroundColor = padColors[index];
+            //if the placeholder doesn't have a bubble add one
+            if (ph.children.length == 0) {
+                const marked = document.createElement("div");
+                ph.appendChild(marked);
+                marked.style.backgroundColor = padColors[index];
+            }
+
+            //if it does have a bubble remove it
+            else {
+                ph.removeChild(ph.childNodes[0]);
+            }
         })
     })
 })
