@@ -18,6 +18,12 @@ window.addEventListener('load', () => {
         "#000000"       //white
     ];
     const pHolders = document.querySelectorAll(".placeHolders div");
+    const placeHolders = document.querySelector(".placeHolders");
+    const phColors = [
+        "#ff0004",
+        "#0004ff"
+    ]
+    createPlaceHolders();
 
     var bpm = 120;          //how fast the lines change in beats per minute
     var lineBeat = 1;       //line metronome starts here
@@ -96,8 +102,30 @@ window.addEventListener('load', () => {
         return true;
     }
 
+    function createPlaceHolders(){
+        var offset = 0;
+        for(i = 0; i < 20; i++) {
+            var ph = document.createElement("div");
+            placeHolders.appendChild(ph);
+            
+            //used to make the colors alternate
+            if(i % 4 == 0 && i != 0) {
+                offset = offset + 1 % 2;
+            }
+
+            if((i - offset) % 2) {
+                ph.style.backgroundColor = phColors[0];
+            }
+            else {
+                ph.style.backgroundColor = phColors[1];
+            }
+
+            ph = null;
+        }
+    }
+
     //places bubble on a metronome line
-    pHolders.forEach((ph, index) => {
+    placeHolders.forEach((ph, index) => {
         ph.addEventListener('click', function(){
             //if the placeholder doesn't have a bubble add one
             if (ph.children.length == 0) {
