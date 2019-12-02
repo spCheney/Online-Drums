@@ -17,13 +17,15 @@ window.addEventListener('load', () => {
         "#6d6f70",      //gray
         "#000000"       //white
     ];
-    const pHolders = document.querySelectorAll(".placeHolders div");
+
     const placeHolders = document.querySelector(".placeHolders");
+    const sBubbles = document.querySelector(".static_bubbles");
     const phColors = [
         "#ff0004",
         "#0004ff"
     ]
     createPlaceHolders();
+    const pHolders = document.querySelectorAll(".placeHolders div");
 
     var bpm = 120;          //how fast the lines change in beats per minute
     var lineBeat = 1;       //line metronome starts here
@@ -50,20 +52,20 @@ window.addEventListener('load', () => {
                 bubble.style.animation = 'jump0 1s ease';
                 break;
             case 1:
-                    bubble.style.animation = 'jump1 1s ease';
-                    break;
+                bubble.style.animation = 'jump1 1s ease';
+                break;
             case 2:
                 bubble.style.animation = 'jump2 1s ease';
                 break;
             case 3:
-                    bubble.style.animation = 'jump3 1s ease';
-                    break;
+                bubble.style.animation = 'jump3 1s ease';
+                break;
             case 4:
                 bubble.style.animation = 'jump4 1s ease';
                 break;
             case 5:
-                    bubble.style.animation = 'jump5 1s ease';
-                    break;
+                bubble.style.animation = 'jump5 1s ease';
+                break;
         }
         bubble.addEventListener('animationend', function () {
             visual.removeChild(this);
@@ -102,6 +104,7 @@ window.addEventListener('load', () => {
         return true;
     }
 
+    //creates a placeholder use to hold the location of where they need to click to select a drum note location
     function createPlaceHolders(){
         var offset = 0;
         for(i = 0; i < 20; i++) {
@@ -125,18 +128,29 @@ window.addEventListener('load', () => {
     }
 
     //places bubble on a metronome line
-    placeHolders.forEach((ph, index) => {
+    pHolders.forEach((ph, index) => {
         ph.addEventListener('click', function(){
             //if the placeholder doesn't have a bubble add one
-            if (ph.children.length == 0) {
+            if (sBubbles.children.length == 0) {
                 const marked = document.createElement("div");
-                ph.appendChild(marked);
-                marked.style.backgroundColor = padColors[index];
+                sBubbles.appendChild(marked);
+                //determines which pad the placeholder corresponds to
+                var padI = (index - (index % 4)) / 4;
+                //sets the color to the color of the corresponding pad
+                marked.style.backgroundColor = padColors[padI];
+                //calculates the top location of the bubble and turns it into a string with a % at the end
+                var topLoc = 7.5 + (padI * 20);
+                var topLocS = topLoc.toString().concat("%");
+                //same thing but with the left location
+                var leftLoc = 10 + ((index % 4) * 25);
+                var leftLocS = leftLoc.toString().concat("%");
+                marked.style.top = topLocS;
+                marked.style.left = leftLocS;
             }
 
             //if it does have a bubble remove it
             else {
-                ph.removeChild(ph.childNodes[0]);
+                sBubbles.removeChild(sBubbles.childNodes[0]);
             }
         })
     })
