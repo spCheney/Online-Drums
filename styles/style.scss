@@ -146,15 +146,15 @@ $j3Pos: calc(#{$start} + #{$inc});
 }
 
 //drawing the lines
-.lines{
-    position: fixed;
-    left: 100px;
-    top: 200px;
-    width: calc(100% - 100px);
-    height: calc(100% - 200px);
-    z-index: -2;
-    display: flex;
-}
+// .lines{
+//     position: fixed;
+//     left: 100px;
+//     top: 200px;
+//     width: calc(100% - 100px);
+//     height: calc(100% - 200px);
+//     z-index: -2;
+//     display: flex;
+// }
 
 $wLineWidth: calc((100% - 20px) / 5);
 $color1: #ffffff;

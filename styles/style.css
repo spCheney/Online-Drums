@@ -231,18 +231,6 @@ header p {
   }
 }
 
-.lines {
-  position: fixed;
-  left: 100px;
-  top: 200px;
-  width: calc(100% - 100px);
-  height: calc(100% - 200px);
-  z-index: -2;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .line0 {
   background: #ffffff;
   width: calc((100% - 20px) / 5);
